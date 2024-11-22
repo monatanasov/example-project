@@ -8,6 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/projects', [ProjectController::class, 'index'])->name('project.index');
 Route::post('/projects', [ProjectController::class, 'store'])->name('project.store');
 Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
 

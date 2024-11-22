@@ -7,6 +7,11 @@ use Tests\TestCase;
 
 class ProjectTest extends TestCase
 {
+    private function indexRoute(): string
+    {
+        return route('project.index');
+    }
+
     private function storeRoute(): string
     {
         return route('project.store');
@@ -17,6 +22,15 @@ class ProjectTest extends TestCase
         return route('project.update', $id);
     }
 
+    public function testIndexReturnsAllProjects()
+    {
+        $project = Project::factory()->create();
+        $url = $this->indexRoute();
+
+        $this
+            ->get($url)
+            ->assertSee($project->{Project::NAME});
+    }
     public function testStoreProjectNameIsRequired()
     {
         $project = Project::factory()->raw();
