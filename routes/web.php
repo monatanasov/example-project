@@ -12,3 +12,4 @@ Route::post('/projects', [ProjectController::class, 'store'])->name('project.sto
 Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
 
 Route::post('/tasks', [TaskController::class, 'store'])->name('task.store');
+Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('task.update');
