@@ -10,6 +10,7 @@ class TaskSeeder extends Seeder
 {
     public function run(): void
     {
+        // TODO: check if this project exists?
         $secondProjectId = Project::skip(1)->first()->{Project::ID};
 
         Task::factory()->create([
