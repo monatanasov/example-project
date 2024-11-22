@@ -1,5 +1,5 @@
 <template>
-    <div class="w-1/4">
+    <div class="w-1/2 border-2 border-black m-auto p-4">
         <h3>Hello from Tasks</h3>
         <div class="flex justify-between">
             <router-link class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to="/projects">

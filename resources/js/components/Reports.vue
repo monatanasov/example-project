@@ -1,18 +1,22 @@
 <template>
-    <div class="w-1/4">
+    <div class="w-1/2 border-2 border-black m-auto p-4">
         <div>
-            <h3 class="flex justify-center">Reports Table</h3>
+            <h3 class="flex justify-center">Projects List</h3>
             <table v-if="projects.length">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <th>Project ID</th>
+                        <th>Project name</th>
+                        <th>Tasks</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="project in projects" :key="project.id">
                         <td>{{ project.id }}</td>
                         <td>{{ project.name }}</td>
+                        <td>
+                            {{ project.tasks.map(task => task.name).join(', ') }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -28,11 +32,6 @@
             </router-link>
         </div>
     </div>
-
-
-
-    {{ this.projects }}
-
 </template>
 
 <script>
