@@ -15,18 +15,15 @@ class TaskSeeder extends Seeder
 
         Task::factory()->create([
             Task::NAME => 'Define Project Requirements and Scope',
-            Task::DUE_DATE => fake()->dateTimeBetween('now', '+1 months'),
         ]);
 
         Task::factory()->create([
             Task::NAME => 'Design the System Architecture',
-            Task::DUE_DATE => fake()->dateTimeBetween('now', '+1 months'),
         ]);
 
         Task::factory()->create([
             Task::PROJECT_ID => $secondProjectId,
             Task::NAME => 'Develop User Authentication',
-            Task::DUE_DATE => fake()->dateTimeBetween('now', '+1 months'),
         ]);
     }
 }
