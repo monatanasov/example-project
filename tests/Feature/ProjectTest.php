@@ -17,6 +17,53 @@ class ProjectTest extends TestCase
         return route('project.update', $id);
     }
 
+    public function testStoreProjectNameIsRequired()
+    {
+        $project = Project::factory()->raw();
+        unset($project[Project::NAME]);
+
+        $this
+            ->postJson($this->storeRoute(), $project)
+            ->assertUnprocessable()
+            ->assertInvalid(Project::NAME);
+    }
+
+    public function testStoreProjectNameIsString()
+    {
+        $project = Project::factory()->raw([
+            Project::NAME => 0,
+        ]);
+
+        $this
+            ->postJson($this->storeRoute(), $project)
+            ->assertUnprocessable()
+            ->assertInvalid(Project::NAME);
+    }
+
+    public function testStoreProjectNameHasMin()
+    {
+        $project = Project::factory()->raw([
+            Project::NAME => '',
+        ]);
+
+        $this
+            ->postJson($this->storeRoute(), $project)
+            ->assertUnprocessable()
+            ->assertInvalid(Project::NAME);
+    }
+
+    public function testStoreProjectNameHasMax()
+    {
+        $project = Project::factory()->raw([
+            Project::NAME => str_repeat('a', 101),
+        ]);
+
+        $this
+            ->postJson($this->storeRoute(), $project)
+            ->assertUnprocessable()
+            ->assertInvalid(Project::NAME);
+    }
+
     public function testStoreProjectCanBeStored(): void
     {
         $project = Project::factory()->raw();
@@ -32,6 +79,7 @@ class ProjectTest extends TestCase
             ]);
     }
 
+    // TODO: add additional tests for ProjectUpdateRequest
     public function testUpdateProjectCanBeUpdated()
     {
         $project = Project::factory()->create();
