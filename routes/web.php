@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::post('/projects', [ProjectController::class, 'store'])->name('project.store');
+Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
