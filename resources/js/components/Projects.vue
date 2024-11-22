@@ -10,7 +10,14 @@
                     name="name"
                 >
 
-                <button type="button" @click="storeProject">Save project</button>
+                <button
+                    type="button"
+                    @click="storeProject"
+                    disabled
+                    title="This feature is under development"
+                >
+                    Save project
+                </button>
         </form>
         <div class="flex justify-between">
             <router-link class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to="/tasks">

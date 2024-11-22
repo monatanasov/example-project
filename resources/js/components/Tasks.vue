@@ -21,7 +21,14 @@
             <label for="datetime">Choose a date and time:</label>
             <input type="datetime-local" id="datetime" name="datetime">
 
-            <button type="button" @click="storeTask">Save task</button>
+            <button
+                type="button"
+                @click="storeTask"
+                disabled
+                title="This feature is under development"
+            >
+                Save task
+            </button>
         </form>
 
         <div class="flex justify-between">
