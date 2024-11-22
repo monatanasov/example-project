@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use App\Models\Project;
 use Tests\TestCase;
 
-class ProjectTest extends TestCase
+class ProjectApiTest extends TestCase
 {
     private function indexRoute(): string
     {

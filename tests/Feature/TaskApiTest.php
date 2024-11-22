@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use App\Models\Task;
 use Tests\TestCase;
 
-class TaskTest extends TestCase
+class TaskApiTest extends TestCase
 {
     private function storeRoute(): string
     {
