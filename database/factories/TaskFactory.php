@@ -16,7 +16,7 @@ class TaskFactory extends Factory
         return [
             Task::PROJECT_ID => $firstProjectId,
             Task::NAME => fake()->name(),
-            Task::DUE_DATE => fake()->dateTimeBetween('now', '+1 months'),
+            Task::DUE_DATE => fake()->dateTimeBetween('now', '+1 months')->format('Y-m-d H:i:s'),
         ];
     }
 }

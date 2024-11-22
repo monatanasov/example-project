@@ -64,7 +64,7 @@ class ProjectTest extends TestCase
             ->assertInvalid(Project::NAME);
     }
 
-    public function testStoreProjectCanBeStored(): void
+    public function testStoreProjectCanBeStored()
     {
         $project = Project::factory()->raw();
 
@@ -79,7 +79,7 @@ class ProjectTest extends TestCase
             ]);
     }
 
-    // TODO: add additional tests for ProjectUpdateRequest
+    // TODO: add additional tests for ProjectUpdateRequest rules
     public function testUpdateProjectCanBeUpdated()
     {
         $project = Project::factory()->create();
