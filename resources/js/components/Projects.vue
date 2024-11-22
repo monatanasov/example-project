@@ -2,15 +2,15 @@
     <div class="w-1/2 border-2 border-black m-auto p-4">
         <h3>Add a project</h3>
         <form @submit.prevent>
-                <label for="project_name">Project name:</label>
+                <label for="name">Project name:</label>
                 <input
                     type="text"
-                    id="project_name"
+                    id="name"
                     v-model="name"
-                    name="project_name"
+                    name="name"
                 >
 
-                <button type="button">Save project</button>
+                <button type="button" @click="storeProject">Save project</button>
         </form>
         <div class="flex justify-between">
             <router-link class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" to="/tasks">
@@ -31,5 +31,10 @@ export default {
             name: '',
         };
     },
+    methods: {
+        storeProject() {
+            // TODO: Add storing logic
+        }
+    }
 }
 </script>
