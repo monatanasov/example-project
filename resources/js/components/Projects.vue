@@ -14,11 +14,11 @@
         </form>
     </div>
 
-    <router-link
-        class="text-blue-700"
-        to="/about"
-    >
+    <router-link class="text-blue-700 flex" to="/tasks">
         Go to Tasks Page
+    </router-link>
+    <router-link class="text-blue-700 flex" to="/reports">
+        Go to Reports Page
     </router-link>
 </template>
 
