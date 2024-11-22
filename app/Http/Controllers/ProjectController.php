@@ -12,7 +12,9 @@ class ProjectController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        return ProjectResource::collection(Project::all());
+        $projects = Project::with('tasks')->get();
+
+        return ProjectResource::collection($projects);
     }
     public function store(ProjectStoreRequest $request): ProjectResource
     {

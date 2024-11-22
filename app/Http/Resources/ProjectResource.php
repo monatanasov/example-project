@@ -12,7 +12,8 @@ class ProjectResource extends JsonResource
     {
         return [
             'id' => $this->{Project::ID},
-            'name' => $this->{Project::NAME}
+            'name' => $this->{Project::NAME},
+            'tasks' => TaskResource::collection($this->whenLoaded('tasks'))
         ];
     }
 }
