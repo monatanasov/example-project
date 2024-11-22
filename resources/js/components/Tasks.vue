@@ -1,10 +1,10 @@
 <template>
-    <h1>Hello from About</h1>
+    <h3>Hello from Tasks</h3>
     <router-link
         class="text-blue-700"
         to="/"
     >
-        Go to Home Page
+        Go to Projects page
     </router-link>
 </template>
 

@@ -18,7 +18,7 @@
         class="text-blue-700"
         to="/about"
     >
-        Go to About Page
+        Go to Tasks Page
     </router-link>
 </template>
 
