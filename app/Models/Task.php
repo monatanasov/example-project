@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Project extends Model
+class Task extends Model
 {
     use HasFactory;
 
-    public const TABLE = 'projects';
+    public const TABLE = 'tasks';
 
     public const ID = 'id';
+    public const PROJECT_ID = 'project_id';
     public const NAME = 'name';
+    public const DUE_DATE = 'due_date';
 
     protected $table = self::TABLE;
 
@@ -21,8 +23,8 @@ class Project extends Model
         self::ID,
     ];
 
-    public function tasks(): HasMany
+    public function project(): BelongsTo
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Project::class);
     }
 }
