@@ -7,6 +7,8 @@ use App\Http\Requests\ProjectUpdateRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\JsonResponse;
+use Exception;
 
 class ProjectController extends Controller
 {
@@ -29,5 +31,23 @@ class ProjectController extends Controller
         $project->update($request->validated());
 
         return new ProjectResource($project);
+    }
+
+    public function destroy(Project $project): JsonResponse
+    {
+        try {
+            $project->delete();
+
+            return response()->json([
+                'message' => 'Project deleted successfully.',
+                'status' => 'success',
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed to delete the project.',
+                'status' => 'error',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
