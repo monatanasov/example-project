@@ -9,6 +9,15 @@
                     {{ project.name }}
                 </option>
             </select>
+            <div v-if="errors" class="flex">
+                <p
+                    v-for="error in errors.project_id"
+                    :key="error"
+                    class="text-red-600"
+                >
+                    {{ error }}
+                </p>
+            </div>
 
             <label for="name">Name</label>
             <input
@@ -17,15 +26,31 @@
                 v-model="name"
                 name="name"
             >
+            <div v-if="errors" class="flex">
+                <p
+                    v-for="error in errors.name"
+                    :key="error"
+                    class="text-red-600"
+                >
+                    {{ error }}
+                </p>
+            </div>
 
             <label for="datetime">Choose a date and time:</label>
-            <input type="datetime-local" id="datetime" name="datetime">
+            <input type="datetime-local" id="datetime" name="datetime" v-model="dueDate">
+            <div v-if="errors" class="flex">
+                <p
+                    v-for="error in errors.due_date"
+                    :key="error"
+                    class="text-red-600"
+                >
+                    {{ error }}
+                </p>
+            </div>
 
             <button
                 type="button"
                 @click="storeTask"
-                disabled
-                title="This feature is under development"
             >
                 Save task
             </button>
@@ -49,9 +74,11 @@ export default {
     name: 'tasks',
     data() {
         return {
-            name,
+            selectedProject: '',
+            name: '',
+            dueDate: '',
             projects: [],
-            selectedProject: ''
+            errors: []
         };
     },
     mounted() {
@@ -68,7 +95,21 @@ export default {
                 });
         },
         storeTask() {
-            // TODO: Add storing logic
+            const data = {
+                project_id: this.selectedProject,
+                name: this.name,
+                due_date: this.dueDate
+            };
+
+            axios.post('/tasks', data)
+                .then(() => {
+                    this.errors = [];
+                    alert('The task was successfully created.');
+                    this.$router.push({ path: '/reports' });
+                })
+                .catch(error => {
+                    this.errors = error.response.data.errors;
+                });
         }
     }
 }
