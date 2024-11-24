@@ -91,7 +91,8 @@ export default {
                     this.projects = response.data.data;
                 })
                 .catch(error => {
-                    console.error("There was an error fetching the projects data:", error);
+                    // TODO: this must be better handled
+                    console.error('There was an error fetching the projects data:', error);
                 });
         },
         storeTask() {
