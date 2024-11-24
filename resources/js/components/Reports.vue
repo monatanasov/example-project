@@ -75,7 +75,18 @@ export default {
                 });
         },
         editProject() {},
-        deleteProject() {},
+        deleteProject(projectId) {
+            axios
+                .delete(`/projects/${projectId}`)
+                .then(response => {
+                    this.projects = this.projects.filter(project => project.id !== projectId);
+                    alert(response.data.message);
+                })
+                .catch(error => {
+                    console.error('Error:', error.response.data.message);
+                    alert('Failed to delete the project.');
+                });
+        },
     }
 }
 </script>
