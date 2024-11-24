@@ -74,6 +74,7 @@ export default {
                     console.error("There was an error fetching the projects data:", error);
                 });
         },
+        // TODO: Fix edit logic
         editProject() {},
         deleteProject(projectId) {
             axios
