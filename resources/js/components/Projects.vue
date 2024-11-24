@@ -9,12 +9,19 @@
                     v-model="name"
                     name="name"
                 >
+                <div v-if="errors" class="flex">
+                    <p
+                        v-for="error in errors.name"
+                        :key="error"
+                        class="text-red-600"
+                    >
+                        {{ error }}
+                    </p>
+                </div>
 
                 <button
                     type="button"
                     @click="storeProject"
-                    disabled
-                    title="This feature is under development"
                 >
                     Save project
                 </button>
@@ -31,16 +38,31 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'projects',
     data() {
         return {
             name: '',
+            errors: [],
         };
     },
     methods: {
         storeProject() {
-            // TODO: Add storing logic
+            const data = {
+                name: this.name
+            };
+
+            axios.post('/projects', data)
+            .then(() => {
+                this.errors = [];
+                alert('The project was successfully created.');
+                this.$router.push({ path: '/reports' });
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors;
+            });
         }
     }
 }

@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::get('/projects', [ProjectController::class, 'index'])->name('project.index');
 Route::post('/projects', [ProjectController::class, 'store'])->name('project.store');
 Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
 
 Route::post('/tasks', [TaskController::class, 'store'])->name('task.store');
 Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('task.update');
